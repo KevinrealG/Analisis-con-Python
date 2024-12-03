@@ -8,16 +8,15 @@ app = Dash(__name__)  # __name__ se usa para inicializar la app Dash
 
 # ----------------------- DATOS ---------------------------
 # Puedes usar un dataset predefinido de Plotly para propósitos educativos
-df = px.data.gapminder()
+# Cargar datos
+ruta = r'C:\Users\HP\Desktop\Analisis con Python\datos\clean_data_excel.csv'
+df = pd.read_csv(ruta)
+# Ver los primeros registros
 
 # -------------------- GRÁFICOS --------------------------
 # Crear gráficos con Plotly usando los datos del DataFrame
-fig1 = px.line(
-    df[df['country'] == 'India'], 
-    x='year', 
-    y='gdpPercap', 
-    title='Crecimiento PIB - India'
-)  # Gráfico de línea mostrando el PIB per cápita de India
+#Primer gráfico: Dispersión de ventas vs. ingresos:
+fig1 = px.scatter(df, x='ventas', y='ingresos',  title="Ventas vs Ingresos por Estado")
 
 fig2 = px.bar(
     df[df['year'] == 2007], 
